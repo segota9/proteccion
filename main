@@ -1,0 +1,37 @@
+import tornado.ioloop
+import tornado.web
+import json
+from pprint import pprint
+import proteccion
+
+
+class MainHandler(tornado.web.RequestHandler):
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with, application/json")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+        self.set_header("Content-Type", 'application/json')
+
+    def post(self):
+        body = json.loads(self.request.body)
+        status = self.get_status()
+
+        if status == 200:
+            res, base64_ = proteccion.resizeimagedummy(body)
+            pprint(base64_[0:40])
+            info_json = proteccion.create_response(res, base64_)
+        else:
+            info_json = proteccion.create_response("not_ok", None)
+
+        self.write(info_json)
+
+
+def make_app():
+    return tornado.web.Application([
+        (r"/", MainHandler),
+    ],)
+
+if __name__ == "__main__":
+    app = make_app()
+    app.listen(9999)
+    tornado.ioloop.IOLoop.current().start()
