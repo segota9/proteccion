@@ -9,8 +9,8 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
   <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/magnific-popup.css" />
   <link rel="stylesheet" href="css/templatemo-style.css" />
-
 
 </head>
 
@@ -18,18 +18,20 @@
   <div class="tm-page-container mx-auto">
     <header class="tm-header text-center">
       <img src="img/logopng.png" alt="Image" class="img-fluid tm-img" />
-
+     
+     
     </header>
+
     <center>
       <h2><p class="tm-primary-color"><i>REDIMENSIONAR IMÁGENES</i></p></h2>
-  </center>
-    <section class="tm-section">
+    </center>
+    <div class="tm-section">
       <nav class="tm-nav">
         <ul>
-          <li class="active">
+          <li>
             <a href="index.html"><span class="tm-nav-deco"></span>Intro</a>
           </li>
-          <li>
+          <li class="active">
             <a href="app.html"><span class="tm-nav-deco"></span>APP</a>
           </li>
           <li>
@@ -38,27 +40,36 @@
         </ul>
       </nav>
       <div class="tm-content-container">
-        <figure class="mb-0">
-          <img src="img/resize.png" alt="Image" class="img-fluid tm-img" />
-        </figure>
-        <div class="tm-content">
-          <p class="mb-4">
-            La aplicación consta de un servicio web capaz de procesar 
-            las imágenes cargadas en él y las ajusta a las dimensiones 
-            propias de una hoja A4.
-          </p>
+        <div class="tm-content tm-content-2">
           <p>
-            Presiona en <a rel="author" href="app.html">APP</a> para cargar tus imágenes.
+            Agrega las imágenes que deseas ajustar...
           </p>
+
+          <p id="mydiv"></p>
+          <input type="file" name="myImage" multiple="multiple" accept="image/png, image/gif, image/jpeg" onchange="loadfile(event)"/>
+          <br><br>
+          <div id="mainDiv">
+          
+          </div>
+          <br><br>
+          <button type="button" class="btn btn-secondary" onclick="sendImages()">Get images!</button>
+          <br><br><br>
+          Output images
+          <br><br>
+          <div id="mainDiv2"> </div>
+
         </div>
       </div>
-    </section>
+    </div>
 
     <footer>
       <span>Copyright 2022</span>
       <span>designed by SeebastianGT</span>
     </footer>
   </div>
-</body>
 
+  <script src="JS/script.js"></script>
+
+
+</body>
 </html>

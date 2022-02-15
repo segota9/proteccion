@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>PROTECCION</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/templatemo-style.css" />
+
+</head>
+
+<body>
+    <div class="tm-page-container mx-auto">
+        <header class="tm-header text-center">
+            <img src="img/logopng.png" alt="Image" class="img-fluid tm-img" />
+        </header>
+        <center>
+            <h2><p class="tm-primary-color"><i>REDIMENSIONAR IMÁGENES</i></p></h2>
+          </center>
+        <section class="tm-section">
+            <nav class="tm-nav">
+                <ul>
+                    <li>
+                        <a href="index.html"><span class="tm-nav-deco"></span>Intro</a>
+                    </li>
+                    <li>
+                        <a href="app.html"><span class="tm-nav-deco"></span>APP</a>
+                    </li>
+                    <li class="active">
+                        <a href="contact.html"><span class="tm-nav-deco"></span>Contact</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="tm-content-container">
+                <div class="mb-0 tm-img-overlay-wrap">
+                    <div class="tm-img-overlay"></div>
+                    <div class="tm-img-overlay-text text-white p-5">
+                        <h4 class="mb-4">Contactanos...</h4>
+                        <p class="tm-small">
+                            Si presentas algún inconveniente con nuestra aplicación, 
+                            no dudes en contactarnos.
+                        </p>
+                    </div>
+                </div>
+                <div class="tm-content">
+                    <form action="" method="POST" class="tm-contact-form">
+                        <div class="form-group">
+                            <input type="text" id="contact_name" name="contact_name"
+                                class="form-control rounded-0 border-top-0 border-right-0 border-left-0"
+                                placeholder="Name" required="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="contact_email" name="contact_email"
+                                class="form-control rounded-0 border-top-0 border-right-0 border-left-0"
+                                placeholder="Email" required="" />
+                        </div>
+
+                        <div class="form-group">
+                            <textarea rows="6" id="contact_message" name="contact_message"
+                                class="form-control rounded-0 border-top-0 border-right-0 border-left-0"
+                                placeholder="Message..." required=""></textarea>
+                        </div>
+
+                        <div class="form-group text-right">
+                            <button type="button" class="btn btn-primary rounded-0" onclick="sendEmail()" >
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script src="JS/script.js"></script>
+      
+        <footer>
+            <span>Copyright 2022</span>
+            <span>designed by SeebastianGT</span>
+        </footer>
+    </div>
+</body>
+
+</html>
