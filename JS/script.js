@@ -1,4 +1,7 @@
+
+
 const toBase64 = file => new Promise(((resolve, reject) => {
+    // Convert image to base 64
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
@@ -6,6 +9,7 @@ const toBase64 = file => new Promise(((resolve, reject) => {
 }));
 
 function createImage(base64) {
+   // Publish the images received.
     var image = new Image();
     image.src = base64["image"];
     image.style.height = "150px";
@@ -15,8 +19,9 @@ function createImage(base64) {
 }
 
 var ImagesArray = [];
-
+    
 function loadfile(event) {
+    // Load images.
     var file_ = event.target.files[0]
     if (file_ !== undefined){
         ImagesArray.push(file_);
@@ -26,6 +31,7 @@ function loadfile(event) {
 }
 
 function addImageDom(file) {
+     // Publish uploaded images
     var tagImage = document.createElement("img");
     tagImage.src = URL.createObjectURL(file);
     tagImage.style.height = "150px";
@@ -35,6 +41,7 @@ function addImageDom(file) {
 }
 
 function sendImages() {
+    // Send uploaded images to the server.
     for (let idx in ImagesArray){
         file = ImagesArray[idx];
         uploadImage(file);
@@ -42,6 +49,7 @@ function sendImages() {
 }
 
 function postRequest(imageBase64) {
+    // Post method used for communication with the server.
     var req = new XMLHttpRequest();
     var data = JSON.stringify({image: imageBase64});
 

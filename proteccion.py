@@ -6,27 +6,21 @@ import re
 import json
 
 def base64toarray(base64_string):
+    # Converts an image in base 64 format and returns it as an array.
     base = re.search(u'base64,(.+)', base64_string).group(1)
     image = base64.b64decode(base)
     pimg = np.frombuffer(image, dtype=np.uint8)
     return np.array(pimg)
 
-
-def get_base64(data):
-    try:
-        info = data["imagen"]
-    except KeyError:
-        info = None
-    return info
-
-
 def image2base64(image, type_='.jpg'):
+    # Converts an image to base 64 format.
     _, im_arr = cv2.imencode(type_, image)
     image_as_text = base64.b64encode(im_arr)
     return "data:image/jpeg;base64," + image_as_text.decode("utf-8")
 
 
 def resizeimagedummy(body):
+    # Image dimension adjustment process.
     try:
         string_base64 = body["image"]
         array_ = base64toarray(string_base64)
@@ -53,7 +47,7 @@ def resizeimagedummy(body):
 
 
 def verticalresize(imgv):
-
+    # Adjust dimensions to vertical images
     try:          
         scale_percenth = ((1122*100)/(imgv.shape[0]))
         scale_percentv = ((795*100)/(imgv.shape[1]))
@@ -78,7 +72,7 @@ def verticalresize(imgv):
 
 
 def horizontalresize(imgh):
-
+    # Adjust dimensions to horizontal images
     try:
         scale_percenth = ((795*100)/(imgh.shape[0]))
         scale_percentv = ((1122*100)/(imgh.shape[1]))
@@ -102,9 +96,20 @@ def horizontalresize(imgh):
 
  
 def create_response(res, base64_):
+    # The image is returned to the client after processing.
     if res == 'ok':
         info_json = json.dumps({"image": base64_, "status": res})
         return info_json
     else:
         info_json = json.dumps({"image": None, "status": res})
         return info_json
+
+
+
+# def get_base64(data):
+    
+#     try:
+#         info = data["imagen"]
+#     except KeyError:
+#         info = None
+#     return info
