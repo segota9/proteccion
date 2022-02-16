@@ -19,7 +19,7 @@ def image2base64(image, type_='.jpg'):
     return "data:image/jpeg;base64," + image_as_text.decode("utf-8")
 
 
-def resizeimagedummy(body):
+def resizeimage(body):
     # Image dimension adjustment process.
     try:
         string_base64 = body["image"]
@@ -30,12 +30,10 @@ def resizeimagedummy(body):
         if (image.shape[0]) > image.shape[1]:
             print ("la orientacion de la imagen es vertical")
             if (image.shape[1]) > 796:
-                print ("la imagen se debe ajustar")
                 image =verticalresize(image)
         else:
             print ("la orientacion de la imagen es horizontal")
             if (image.shape[1]) > 796:
-                print ("la imagen se debe ajustar")
                 image= horizontalresize(image)
 
         res = "ok"
@@ -56,8 +54,7 @@ def verticalresize(imgv):
             scale_percent = scale_percenth
         else:
             scale_percent = scale_percentv
-
-        print (scale_percent)
+        print ("la imagen se debe ajustar un: {:.2f} % ".format(scale_percent) )
         width = int(imgv.shape[1] * scale_percent / 100)
         height = int(imgv.shape[0] * scale_percent / 100)
         dim = (width, height)

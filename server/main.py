@@ -22,7 +22,7 @@ class MainHandler(tornado.web.RequestHandler):
         status = self.get_status()
 
         if status == 200:
-            res, base64_ = proteccion.resizeimagedummy(body)
+            res, base64_ = proteccion.resizeimage(body)
             pprint(base64_[0:40])
             info_json = proteccion.create_response(res, base64_)
         else:
