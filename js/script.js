@@ -68,7 +68,7 @@ function postRequest(imageBase64) {
     var req = new XMLHttpRequest();
     var data = JSON.stringify({image: imageBase64});
 
-    req.open("POST", "http://localhost:9999/", true);
+    req.open("POST", "http://54.165.29.213/9999", true);
 
     req.onreadystatechange = function (aEvt) {
         if (req.status == 200 && req.readyState == 4){
