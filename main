@@ -10,6 +10,7 @@ import proteccion
 class MainHandler(tornado.web.RequestHandler):
     def set_default_headers(self):
         #Headers control the flow of get and post functions within the browser.
+        self.set_header('Cache-Control', 'no-store, no-cache, must-   revalidate, max-age=0')
         self.set_header("Access-Control-Allow-Origin", "*")
         self.set_header("Access-Control-Allow-Headers", "x-requested-with, application/json")
         self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
