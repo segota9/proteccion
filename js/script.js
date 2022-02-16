@@ -10,23 +10,35 @@ const toBase64 = file => new Promise(((resolve, reject) => {
 
 function createImage(base64) {
    // Publish the images received.
-    var image = new Image();
-    image.src = base64["image"];
-    image.style.height = "150px";
-    image.style.width  = "100px";
+    image = createImageDom(base64["image"])
     var maindiv2 = document.getElementById("mainDiv2");
     maindiv2.appendChild(image);
+}
+
+function createImageDom(base64) {
+    var image = new Image();
+
+    image.setAttribute("src" , base64);
+    image.setAttribute("class" , "img-thumbnail");
+    image.setAttribute("alt" , "Responsive image");
+    image.setAttribute("style" , "height: 150px; " +
+        "width: 100px; ");
+
+    return image;
 }
 
 var ImagesArray = [];
     
 function loadfile(event) {
     // Load images.
-    var file_ = event.target.files[0]
-    if (file_ !== undefined){
-        ImagesArray.push(file_);
-        console.log(ImagesArray);
-        addImageDom(file_);
+    for (let idx in event.target.files) {
+        var file_ = event.target.files[idx];
+
+        if (file_ !== undefined){
+            ImagesArray.push(file_);
+            console.log(ImagesArray);
+            addImageDom(file_);
+        }
     }
 }
 
@@ -34,8 +46,11 @@ function addImageDom(file) {
      // Publish uploaded images
     var tagImage = document.createElement("img");
     tagImage.src = URL.createObjectURL(file);
+    tagImage.setAttribute("style", "height: 150; width: 100px;");
+    tagImage.setAttribute("class", "img-thumbnail");
     tagImage.style.height = "150px";
     tagImage.style.width  = "100px";
+
     var maindiv = document.getElementById("mainDiv");
     maindiv.appendChild(tagImage);
 }

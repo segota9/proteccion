@@ -18,8 +18,6 @@
   <div class="tm-page-container mx-auto">
     <header class="tm-header text-center">
       <img src="img/logopng.png" alt="Image" class="img-fluid tm-img" />
-     
-     
     </header>
 
     <center>
@@ -41,23 +39,28 @@
       </nav>
       <div class="tm-content-container">
         <div class="tm-content tm-content-2">
-          <p>
-            Agrega las imágenes que deseas ajustar...
-          </p>
-
-          <p id="mydiv"></p>
-          <input type="file" name="myImage" multiple="multiple" accept="image/png, image/gif, image/jpeg" onchange="loadfile(event)"/>
-          <br><br>
-          <div id="mainDiv">
-          
+          <div class="row" style="margin-bottom: 30px">
+            <p style="text-align: right">
+              Agrega las imágenes que deseas ajustar
+            </p>
+            <p id="mydiv"></p>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFileLang" name="myImage" multiple="multiple" accept="image/png, image/gif, image/jpeg" onchange="loadfile(event)">
+              <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+            </div>
+            <br><br>
+            <div id="mainDiv" class="container">
+            </div>
+         </div>
+          <div class="row">
+            <br><br>
+            <div class="col text-center">
+              <button type="button" class="btn btn-secondary" onclick="sendImages()">Get images!</button>
+            </div>
           </div>
-          <br><br>
-          <button type="button" class="btn btn-secondary" onclick="sendImages()">Get images!</button>
-          <br><br><br>
-          Output images
-          <br><br>
-          <div id="mainDiv2"> </div>
-
+          <div class="row" style="margin-top: 20px">
+            <div id="mainDiv2" class="container"></div>
+          </div>
         </div>
       </div>
     </div>
