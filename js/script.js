@@ -73,7 +73,6 @@ function postRequest(imageBase64) {
     req.onreadystatechange = function (aEvt) {
         if (req.status == 200 && req.readyState == 4){
             console.log(req.readyState);
-            console.log("wiiiiiiiiii");
             console.log(req.response);
             createImage(JSON.parse(req.response));
         }else{
