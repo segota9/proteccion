@@ -41,6 +41,6 @@ def make_app():
 if __name__ == "__main__":
     # Main cicle.
     app = make_app()
-    app.listen(9999)
+    app.listen(80)
     print ("Server ONLINE as http://127.0.0.1/9999/")
     tornado.ioloop.IOLoop.current().start()
